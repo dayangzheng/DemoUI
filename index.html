@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>文件检索中心</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="header-top">
+          <div class="title-block">
+            <h1 class="app-title">智能文件检索中心</h1>
+            <p class="app-subtitle">选择参与检索的文件库，精准控制搜索范围</p>
+          </div>
+          <div class="header-actions">
+            <button class="action-button restore-default" type="button">恢复默认库</button>
+            <button class="action-button clear-all" type="button">清除全部</button>
+          </div>
+        </div>
+        <div class="search-area" role="search">
+          <input
+            class="search-input"
+            type="search"
+            placeholder="搜索文档、标题或关键词…"
+            aria-label="搜索内容"
+          />
+          <button class="primary-button" type="button">搜索</button>
+        </div>
+        <div class="selected-summary">
+          <span class="summary-label">当前已选库</span>
+          <div class="selected-chips" id="selectedChips" aria-live="polite"></div>
+        </div>
+      </header>
+      <main class="app-content">
+        <section class="library-section" aria-label="文件库列表">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">文件库列表</h2>
+              <p class="section-subtitle">勾选需要加入检索的文件库，可按类别折叠或搜索</p>
+            </div>
+            <div class="section-actions">
+              <button class="ghost-button select-visible" type="button">全选可见</button>
+              <button class="ghost-button deselect-visible" type="button">取消可见</button>
+            </div>
+          </div>
+          <div class="library-toolbar">
+            <div class="toolbar-search">
+              <input
+                id="libraryFilterInput"
+                class="toolbar-input"
+                type="search"
+                placeholder="筛选库（名称、标签）…"
+                aria-label="筛选文件库"
+              />
+            </div>
+            <label class="remember-toggle">
+              <input id="rememberPreference" type="checkbox" checked />
+              <span>记住我的选择</span>
+            </label>
+          </div>
+          <div class="library-groups" id="libraryGroups"></div>
+        </section>
+        <aside class="selection-preview" aria-label="已选库预览">
+          <div class="preview-header">
+            <h2 class="preview-title">已选库</h2>
+            <span class="preview-count" id="selectedCount">0</span>
+          </div>
+          <p class="preview-subtitle">调整顺序或点击移除，以快速控制检索范围。</p>
+          <ol class="selected-list" id="selectedList"></ol>
+          <div class="preview-card">
+            <h3>系统推荐</h3>
+            <p>默认启用高频使用的库，确保覆盖关键文档。可随时恢复默认设置。</p>
+          </div>
+          <div class="preview-card">
+            <h3>使用提示</h3>
+            <ul>
+              <li>选择过多的库可能延长检索时间。</li>
+              <li>可以通过顶部按钮快速恢复默认或清除全部。</li>
+              <li>鼠标悬停在库名称旁的“i”图标，可查看库简介。</li>
+            </ul>
+          </div>
+        </aside>
+      </main>
+    </div>
+    <div class="toast-container" id="toastContainer" role="status" aria-live="polite"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
